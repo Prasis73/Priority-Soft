@@ -5,6 +5,7 @@ import 'package:get_shoes/features/products/data/repositories/review_repository_
 import 'package:get_shoes/features/products/presentation/bloc/review_bloc.dart';
 import 'package:get_shoes/features/products/presentation/bloc/review_state.dart';
 import 'package:get_shoes/features/products/presentation/pages/all_reviews.dart';
+import 'package:get_shoes/features/products/presentation/widgets/format_time.dart';
 
 class Reviews extends StatelessWidget {
   String id;
@@ -73,7 +74,8 @@ class Reviews extends StatelessWidget {
                               ],
                             ),
                             trailing: Text(
-                              'Today', // You can format the dateOfReview as needed
+                              formatTimestamp(review
+                                  .date), // You can format the dateOfReview as needed
                               style: AppTextStyles.normalStyle12
                                   .copyWith(color: const Color(0xffB7B7B7)),
                             ),

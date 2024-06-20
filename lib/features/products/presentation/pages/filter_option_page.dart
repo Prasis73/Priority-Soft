@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_shoes/core/const/app_text_styles.dart';
+import 'package:get_shoes/features/products/presentation/widgets/get_color_from_string.dart';
 
 class FilterOptionsPage extends StatefulWidget {
   final Map<String, dynamic> currentFilters;
@@ -366,7 +367,7 @@ class _FilterOptionsPageState extends State<FilterOptionsPage> {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(30),
-                      color: _getColorFromName(label.toLowerCase())),
+                      color: getColorFromName(label.toLowerCase())),
                 ),
                 const SizedBox(
                   width: 12,
@@ -425,20 +426,4 @@ class CustomThumbShape extends SliderComponentShape {
     // Draw the inner circle
     canvas.drawCircle(center, _thumbRadius - 2, fillPaint);
   }
-}
-
-Color _getColorFromName(String colorName) {
-  final colorMap = {
-    'red': Colors.red,
-    'blue': Colors.blue,
-    'green': Colors.green,
-    'yellow': Colors.yellow,
-    'pink': Colors.pink,
-    'white': Colors.white,
-    'black': Colors.black
-    // Add more colors as needed
-  };
-
-  return colorMap[colorName.toLowerCase()] ??
-      Colors.grey; // Default color if not found
 }

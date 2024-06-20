@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_shoes/core/const/app_text_styles.dart';
 import 'package:get_shoes/features/products/data/models/product_model.dart';
 import 'package:get_shoes/features/products/presentation/widgets/cart_icon_badge.dart';
+import 'package:get_shoes/features/products/presentation/widgets/get_color_from_string.dart';
 import 'package:get_shoes/features/products/presentation/widgets/review_page.dart';
 import 'package:get_shoes/features/products/presentation/widgets/bottom_nav_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -118,7 +119,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     });
 
                                     final colorName = product.colors[index];
-                                    final color = _getColorFromName(colorName);
+                                    final color = getColorFromName(colorName);
                                     return GestureDetector(
                                       onTap: () {
                                         setState(() {
@@ -322,20 +323,4 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             selectedColor: selectedColor,
             selectedSize: selectedSize));
   }
-}
-
-Color _getColorFromName(String colorName) {
-  final colorMap = {
-    'red': Colors.red,
-    'blue': Colors.blue,
-    'green': Colors.green,
-    'yellow': Colors.yellow,
-    'pink': Colors.pink,
-    'white': Colors.white,
-    'black': Colors.black
-    // Add more colors as needed
-  };
-
-  return colorMap[colorName.toLowerCase()] ??
-      Colors.grey; // Default color if not found
 }

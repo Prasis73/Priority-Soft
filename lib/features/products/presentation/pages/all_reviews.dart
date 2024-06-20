@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get_shoes/core/const/app_text_styles.dart';
 import 'package:get_shoes/features/products/data/models/review_model.dart';
+import 'package:get_shoes/features/products/presentation/widgets/format_time.dart';
 import 'package:intl/intl.dart';
 
 class AllReviews extends StatefulWidget {
@@ -216,25 +217,5 @@ class FilterButton extends StatelessWidget {
                 .copyWith(color: isSelected ? Colors.black : Colors.grey),
           ),
         ));
-  }
-}
-
-String formatTimestamp(Timestamp timestamp) {
-  DateTime date = timestamp.toDate();
-  DateTime now = DateTime.now();
-  DateTime tomorrow = now.add(const Duration(days: 1));
-
-  // Normalize dates to remove time part
-  DateTime normalizedDate = DateTime(date.year, date.month, date.day);
-  DateTime normalizedNow = DateTime(now.year, now.month, now.day);
-  DateTime normalizedTomorrow =
-      DateTime(tomorrow.year, tomorrow.month, tomorrow.day);
-
-  if (normalizedDate == normalizedNow) {
-    return 'Today';
-  } else if (normalizedDate == normalizedTomorrow) {
-    return 'Tomorrow';
-  } else {
-    return DateFormat('dd/MM').format(date);
   }
 }
