@@ -11,6 +11,7 @@ class Product {
   final List<dynamic> colors;
   final String description;
   final List<dynamic> sizes;
+  final DocumentSnapshot documentSnapshot;
 
   Product({
     required this.id,
@@ -23,6 +24,7 @@ class Product {
     required this.colors,
     required this.description,
     required this.sizes,
+    required this.documentSnapshot,
   });
 
   factory Product.fromSnapshot(DocumentSnapshot snapshot) {
@@ -38,6 +40,7 @@ class Product {
       colors: List<String>.from(data['colors']),
       description: data['description'] ?? "",
       sizes: List<String>.from(data['sizes']),
+      documentSnapshot: snapshot,
     );
   }
 
@@ -52,6 +55,7 @@ class Product {
     List<dynamic>? colors,
     String? description,
     List<dynamic>? sizes,
+    DocumentSnapshot? documentSnapshot,
   }) {
     return Product(
       id: id ?? this.id,
@@ -64,6 +68,7 @@ class Product {
       colors: colors ?? this.colors,
       description: description ?? this.description,
       sizes: sizes ?? this.sizes,
+      documentSnapshot: this.documentSnapshot,
     );
   }
 }

@@ -4,8 +4,12 @@ import 'package:get_shoes/features/products/data/models/product_model.dart';
 class ProductRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Future<List<Product>> getProducts({Map<String, dynamic>? filters}) async {
-    Query query = _firestore.collection('products');
+  Future<List<Product>> getProducts({
+    Map<String, dynamic>? filters,
+    DocumentSnapshot? startAfter,
+    int limit = 10,
+  }) async {
+    Query query = _firestore.collection('products').limit(limit);
 
     if (filters != null) {
       if (filters.containsKey('brand') && filters['brand'] != null) {
@@ -21,9 +25,11 @@ class ProductRepository {
         query = query.where("colors", arrayContains: filters['colors']);
       }
     }
+    if (startAfter != null) {
+      query = query.startAfterDocument(startAfter);
+    }
 
     final querySnapshot = await query.get();
     return querySnapshot.docs.map((doc) => Product.fromSnapshot(doc)).toList();
   }
-
 }

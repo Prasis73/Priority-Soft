@@ -24,6 +24,33 @@ class _DiscoverPageState extends State<DiscoverPage> {
   Map<String, dynamic> currentFilters = {};
   final filters = ['All', 'Nike', 'Jordan', 'Adidas', 'Reebok'];
   String selectedBrand = "All";
+  final ScrollController _scrollController = ScrollController();
+  @override
+  void initState() {
+    context.read<DiscoverBloc>().add(FetchProducts());
+    _scrollController.addListener(_onScroll);
+    super.initState();
+  }
+
+  void _onScroll() {
+    if (_isBottom) {
+      context.read<DiscoverBloc>().add(FetchMoreProducts());
+    }
+  }
+
+  bool get _isBottom {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    return currentScroll >= (maxScroll * 0.9);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _scrollController.removeListener(_onScroll);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,14 +136,21 @@ class _DiscoverPageState extends State<DiscoverPage> {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 20),
                                 child: GridView.builder(
+                                  controller: _scrollController,
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
                                           childAspectRatio: 0.74,
                                           crossAxisSpacing: 10),
-                                  itemCount: state.products.length,
+                                  itemCount: state.hasReachedMax
+                                      ? state.products.length
+                                      : state.products.length + 1,
                                   itemBuilder: (context, index) {
                                     final product = state.products[index];
+                                    if (index >= state.products.length) {
+                                      return const Center(
+                                          child: CircularProgressIndicator());
+                                    }
                                     return InkWell(
                                         onTap: () {
                                           Navigator.of(context).pushNamed(
