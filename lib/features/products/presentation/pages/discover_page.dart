@@ -141,6 +141,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                                       const SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 2,
                                           childAspectRatio: 0.74,
+                                          mainAxisSpacing: 10,
                                           crossAxisSpacing: 10),
                                   itemCount: state.hasReachedMax
                                       ? state.products.length

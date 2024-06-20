@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_shoes/core/const/app_text_styles.dart';
 import 'package:get_shoes/features/products/data/models/product_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -50,16 +51,23 @@ class ProductCard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8.0),
-        Text(
-          product.name,
-          style: GoogleFonts.urbanist(
-            fontWeight: FontWeight.w500,
-            textStyle: const TextStyle(
-              fontSize: 12,
+        Padding(
+          padding: const EdgeInsets.only(left: 3.0),
+          child: Text(
+            product.name,
+            style: GoogleFonts.urbanist(
+              fontWeight: FontWeight.w500,
+              textStyle: const TextStyle(
+                fontSize: 12,
+              ),
             ),
           ),
         ),
+        const SizedBox(
+          height: 6,
+        ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Icon(Icons.star, color: Colors.yellow, size: 16),
             const SizedBox(
@@ -88,14 +96,13 @@ class ProductCard extends StatelessWidget {
             ),
           ],
         ),
-        Text(
-          '\$${double.parse(product.price.toString())}',
-          style: GoogleFonts.urbanist(
-            fontWeight: FontWeight.bold,
-            textStyle: const TextStyle(
-              fontSize: 14,
-            ),
-          ),
+        const SizedBox(
+          height: 6,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 3),
+          child: Text('\$${double.parse(product.price.toString())}',
+              style: AppTextStyles.boldStyle14),
         ),
       ],
     );

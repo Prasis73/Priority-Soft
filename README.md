@@ -2,6 +2,11 @@
 
 Get Shoes is an app where User can get variety of branded shoes.
 
+## For test,
+
+Username: test@gmail.com
+PassWord: 12345678
+
 ## Features
 
 - Can Register and Login.

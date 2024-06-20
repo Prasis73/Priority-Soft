@@ -18,8 +18,8 @@ class CartPage extends StatelessWidget {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.only(
-              top: 58.0,
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height / 12,
             ),
             child: BlocProvider(
               create: (context) => CartItemBloc(
@@ -42,7 +42,7 @@ class CartPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                  padding: const EdgeInsets.only(top: 70.0),
+                  padding: const EdgeInsets.only(top: 65.0),
                   child: Text(
                     "Cart",
                     style: AppTextStyles.semiBoldStyle16,
