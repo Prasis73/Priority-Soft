@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "852328484281",
+    "project_id": "getshoes-dc0f6",
+    "storage_bucket": "getshoes-dc0f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852328484281:android:c9d4ac2b1c91fbaaf5fa68",
+        "android_client_info": {
+          "package_name": "com.example.get_shoes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLoObY2KfjOPwOyKC9Hvtyvq3o5OD_G2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
