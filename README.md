@@ -7,6 +7,9 @@ Get Shoes is an app where User can get variety of branded shoes.
 Username: test@gmail.com
 PassWord: 12345678
 
+## for firebase access, you can mail me so I can give you access
+email: prasis73@gmail.com
+
 ## Features
 
 - Can Register and Login.
